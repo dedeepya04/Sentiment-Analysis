@@ -18,7 +18,7 @@ A piechart showing the percentages of users rated 5 star, 4star, 3 star, 2 star,
 
 3) The final step is to connect this code to a webpage and I used Flask which is a popular web framework for python. I designed the web pages using HTML and CSS.
 
-   Libraries used are: 1) Flask
+Libraries used are: 1) Flask
                        2)Pandas
                        3)seaborn
                        4)nltk
@@ -26,7 +26,8 @@ A piechart showing the percentages of users rated 5 star, 4star, 3 star, 2 star,
                        6)matplotlib
                        7)csv
                        8)os
-   Techstacks used are :1)Python
+   
+Techstacks used are :1)Python
                         2)Flask
                         3) HTML
                         4)CSS
