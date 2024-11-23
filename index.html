@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+    .myclass{
+    width: 40%;
+    padding-left:5px;
+    height: 35px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    font-size: 15px;
+}
+body {
+    background-color: lightblue;
+}
+form{
+    text-align: center;
+    padding-top: 100px;
+}
+button{
+    height: 40px;
+    width: 5%;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.heading{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 10px;
+}
+h2{
+    padding-top: 5px;
+    font-family: cursive;
+}
+button:hover{
+    background-color: rgba(223, 167, 221, 0.712);
+}
+    </style>
+</head>
+<body>
+    <div class="heading">
+    <h1> Flipkart Review Analysis</h1>
+    <h2> Hey, Welcome...</h2>
+</div>
+    <form action="/analyze" method="post">
+        <input type="text" class="myclass" name="product_link" placeholder="Paste a Flipkart product link" required>
+        <button type="submit">Analyze</button>
+    </form>
+</body>
+</html>
