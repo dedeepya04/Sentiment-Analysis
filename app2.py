@@ -5,6 +5,7 @@ import re
 import string
 import seaborn as sns
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -26,15 +27,16 @@ def index():
 @app.route('/analyze', methods=['POST'])
 def analyze():
     url = request.form ['product_link']  
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.get(url)
-
-    
-
    
     title = driver.find_element(By.CLASS_NAME, "VU-ZEz").text
     rate = driver.find_element(By.CSS_SELECTOR, ".XQDdHH").text
-    
     
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     time.sleep(2)
@@ -73,7 +75,6 @@ def analyze():
 
     driver.quit()
 
-    
     data = pd.read_csv("flipkart_reviews.csv")
     nltk.download('stopwords')
     stemmer = nltk.SnowballStemmer('english')
@@ -96,23 +97,15 @@ def analyze():
 
     data["Review"] = data["Review"].apply(clean)
 
-    
-
     labels = ["5 Star", "4 Star", "3 Star", "2 Star", "1 Star"]
-
-
     plt.figure(figsize=(8, 8))
     plt.pie(ratings, labels=labels, autopct='%1.1f%%', startangle=140, colors=sns.color_palette('pastel'))
     plt.title("Distribution of Ratings")
 
-
     if not os.path.exists('static'):
         os.makedirs('static')
 
-
-    plt.savefig('static/ratings_pie_chart.png')
-
-    
+    plt.savefig('static/ratings_pie_chart.png') 
     plt.close()
 
     
@@ -132,7 +125,6 @@ def analyze():
     else:
         sentiment = "Neutral 🙂"
 
-    
     return render_template(
         'result.html',
         title=title,
