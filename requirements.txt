@@ -6,3 +6,4 @@ selenium
 webdriver-manager
 matplotlib
 gunicorn
+pyppeteer
