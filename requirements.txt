@@ -1,9 +1,0 @@
-Flask
-pandas
-nltk
-seaborn
-selenium
-webdriver-manager
-matplotlib
-gunicorn
-pyppeteer
